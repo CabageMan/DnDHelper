@@ -1,4 +1,4 @@
-package com.ironhead.dndhelper;
+package com.ironhead.dndhelper.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
