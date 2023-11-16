@@ -1,4 +1,4 @@
-package com.ironhead.dndhelper.controllers;
+package com.ironhead.dndhelper.sandBox;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

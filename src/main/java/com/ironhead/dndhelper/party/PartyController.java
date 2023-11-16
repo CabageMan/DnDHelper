@@ -1,8 +1,5 @@
-package com.ironhead.dndhelper.controllers;
+package com.ironhead.dndhelper.party;
 
-import com.ironhead.dndhelper.dto.PartyData;
-import com.ironhead.dndhelper.models.Party;
-import com.ironhead.dndhelper.services.PartyService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,36 +14,36 @@ public class PartyController {
 
   /**
    * <p>Get all parties data. The pagination should be used here.</p>
-   * @return List<PartyData>
+   * @return List<PartyDto>
    */
   @GetMapping
-  public List<PartyData> getParties() {
+  public List<PartyDto> getParties() {
     return partyService.getAllParties();
   }
 
   /**
    * <p>Method to get the party data based on the ID.</p>
-   * @param id
-   * @return PartyData
+   * @param id: Long
+   * @return PartyDto
    */
   @GetMapping("/party/{id}")
-  public PartyData getParty(@PathVariable Long id) {
+  public PartyDto getParty(@PathVariable Long id) {
     return partyService.getPartyById(id);
   }
 
   /**
    * <p>Post request to create party.</p>
-   * @param partyData
-   * @return PartyData
+   * @param partyDto: PartyDto
+   * @return PartyDto
    */
   @PostMapping("/party")
-  public PartyData saveParty(final @RequestBody PartyData partyData) {
-    return partyService.saveParty(partyData);
+  public PartyDto saveParty(final @RequestBody PartyDto partyDto) {
+    return partyService.saveParty(partyDto);
   }
 
   /**
    * <p>Delete party from based on the id.</p>
-   * @param id
+   * @param id: Long
    * @return Boolean
    */
   @DeleteMapping("/party/{id}")

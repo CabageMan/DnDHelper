@@ -1,6 +1,5 @@
-package com.ironhead.dndhelper.repositories;
+package com.ironhead.dndhelper.party;
 
-import com.ironhead.dndhelper.models.Party;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

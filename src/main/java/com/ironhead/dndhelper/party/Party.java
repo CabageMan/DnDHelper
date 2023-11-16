@@ -1,7 +1,6 @@
-package com.ironhead.dndhelper.models;
+package com.ironhead.dndhelper.party;
 
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
