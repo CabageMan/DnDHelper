@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class DefaultPartyService implements PartyService {
   /**
    * Create a Party based on the data sent to the service class.
    *
-   * @param party: PartyDto
+   * @param party PartyDto
    * @return DTO representation of the customer
    */
   @Override
@@ -29,7 +30,7 @@ public class DefaultPartyService implements PartyService {
    * Delete party based on the party ID.
    * Also, it's possible to delete party based on the entity
    * (passing JPA entity class as method parameter. But it also returns void, and we need return boolean. Check this moment)
-   * @param partyId: Long
+   * @param partyId Long
    * @return boolean
    */
   @Override
@@ -76,6 +77,8 @@ public class DefaultPartyService implements PartyService {
     Party party = new Party();
     // Use constructor instead setter
     party.setName(partyDto.getName());
+    party.setCreatedTime(LocalDateTime.now());
+    party.setUpdatedTime(LocalDateTime.now());
     return party;
   }
 
