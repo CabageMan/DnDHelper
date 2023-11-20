@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "Party") // Available by setting naming strategy in application.properties.
 @EntityListeners(AuditingEntityListener.class)
 public class Party {
 
