@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class DnDHelperApplication {
 
-  private static final Logger log = LoggerFactory.getLogger(DnDHelperApplication.class);
+//  private static final Logger log = LoggerFactory.getLogger(DnDHelperApplication.class);
 
   public static void main(String[] args) {
     SpringApplication.run(DnDHelperApplication.class, args);
