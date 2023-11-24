@@ -1,4 +1,4 @@
-package com.ironhead.dndhelper.party;
+package com.ironhead.dndhelper.game;
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -7,9 +7,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@Entity(name = "Party") // Available by setting naming strategy in application.properties.
+@Entity(name = "Game") // Available by setting naming strategy in application.properties.
 @EntityListeners(AuditingEntityListener.class)
-public class Party {
+public class Game {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Party {
   @LastModifiedDate
   private LocalDateTime updatedTime;
 
-  public Party() {
+  public Game() {
   }
 
-  public Party(String name) {
+  public Game(String name) {
     this.name = name;
   }
 
@@ -65,6 +65,6 @@ public class Party {
 
   @Override
   public String toString() {
-    return "Party{" + "name='" + name + '\'' + '}';
+    return "Game{" + "name='" + name + '\'' + '}';
   }
 }

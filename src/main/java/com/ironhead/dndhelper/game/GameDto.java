@@ -1,11 +1,11 @@
-package com.ironhead.dndhelper.party;
+package com.ironhead.dndhelper.game;
 
-// Party Data Transfer Object
-public class PartyDto {
+// Game Data Transfer Object
+public class GameDto {
   private Long id;
   private String name;
 
-  public PartyDto() { }
+  public GameDto() { }
 
   public Long getId() {
     return id;

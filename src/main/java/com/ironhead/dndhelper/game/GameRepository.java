@@ -1,9 +1,9 @@
-package com.ironhead.dndhelper.party;
+package com.ironhead.dndhelper.game;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PartyRepository extends JpaRepository<Party, Long> {
+public interface GameRepository extends JpaRepository<Game, Long> {
 
 }
