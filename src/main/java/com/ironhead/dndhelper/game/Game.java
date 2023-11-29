@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity(name = "Game") // Available by setting naming strategy in application.properties.
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "GAMES")
 public class Game {
 
   @Id
@@ -24,8 +25,7 @@ public class Game {
   @LastModifiedDate
   private LocalDateTime updatedTime;
 
-  public Game() {
-  }
+  public Game() { }
 
   public Game(String name) {
     this.name = name;
@@ -65,6 +65,6 @@ public class Game {
 
   @Override
   public String toString() {
-    return "Game{" + "name='" + name + '\'' + '}';
+    return "Game{" + "name='" + name + "'" + "}";
   }
 }
