@@ -16,6 +16,7 @@
     <properties>
         <java.version>21</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,6 +67,13 @@
             <version>2.3.1</version>
         </dependency>
 
+<!--        Helpers-->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
 <!--        Testing-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -88,6 +96,11 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.2-android</version>
         </dependency>
     </dependencies>
 

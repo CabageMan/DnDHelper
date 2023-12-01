@@ -63,7 +63,7 @@ public class DefaultGameService implements GameService {
     return populateGameData(
             gameRepository
                     .findById(gameId)
-                    .orElseThrow(() -> new EntityNotFoundException("Party not found"))
+                    .orElseThrow(() -> new EntityNotFoundException("Game not found"))
     );
   }
 

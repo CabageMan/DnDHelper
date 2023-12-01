@@ -1,5 +1,7 @@
-package com.ironhead.dndhelper.user;
+package com.ironhead.dndhelper.helpers;
 
+import com.ironhead.dndhelper.user.User;
+import com.ironhead.dndhelper.user.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

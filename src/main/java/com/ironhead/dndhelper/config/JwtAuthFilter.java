@@ -1,7 +1,7 @@
 package com.ironhead.dndhelper.config;
 
 import com.ironhead.dndhelper.jwt.JwtService;
-import com.ironhead.dndhelper.user.UserDetailsServiceImpl;
+import com.ironhead.dndhelper.helpers.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

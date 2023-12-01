@@ -1,10 +1,10 @@
 package com.ironhead.dndhelper.user;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import com.ironhead.dndhelper.helpers.RefreshableCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
-  public User findUserByUsername(String username);
+public interface UserRepository extends RefreshableCrudRepository<User, Long> {
+  User findUserByUsername(String username);
+  User findFirstById(Long id);
 }
