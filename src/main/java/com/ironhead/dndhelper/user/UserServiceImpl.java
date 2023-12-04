@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         throw new EntityNotFoundException("Could not find user with identifier: " + userRequest.getId());
       }
     } else {
-      userRepository.save(user);
+      savedUser = userRepository.save(user);
     }
 
     userRepository.refresh(savedUser);

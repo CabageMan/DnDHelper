@@ -24,7 +24,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfig {
   public static final String REQUEST_ENDPOINT_BEGINNING = "/api/v1/";
-//  public static final String REQUEST_ENDPOINT_COMMON = REQUEST_ENDPOINT_BEGINNING + "**";
   public static final String SAVE_REQUEST_ENDPOINT = REQUEST_ENDPOINT_BEGINNING + "save";
   public static final String LOGIN_REQUEST_ENDPOINT = REQUEST_ENDPOINT_BEGINNING + "login";
   public static final String REFRESH_TOKEN_REQUEST_ENDPOINT = REQUEST_ENDPOINT_BEGINNING + "refreshToken";

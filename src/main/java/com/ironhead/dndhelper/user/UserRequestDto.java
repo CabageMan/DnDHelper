@@ -8,16 +8,13 @@ public class UserRequestDto {
   private String password;
   private Set<UserRole> roles;
 
-  public UserRequestDto() {
-  }
+  public UserRequestDto() { }
 
   public UserRequestDto(
-          Long id,
           String username,
           String password,
           Set<UserRole> roles
   ) {
-    this.id = id;
     this.username = username;
     this.password = password;
     this.roles = roles;

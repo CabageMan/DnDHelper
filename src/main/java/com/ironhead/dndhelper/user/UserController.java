@@ -36,7 +36,7 @@ public class UserController {
       UserResponseDto userResponse = userService.saveUser(userRequest);
       return ResponseEntity.ok(userResponse);
     } catch (Exception e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("We get error in this method " + e.getMessage());
     }
   }
 
@@ -102,6 +102,4 @@ public class UserController {
       throw new RuntimeException(e);
     }
   }
-  // Fix: java.lang.IllegalArgumentException: Attempt to generate refresh event with null object
-  // at com.ironhead.dndhelper.helpers.RefreshableCrudRepositoryImpl.refresh(RefreshableCrudRepositoryImpl.java:27)
 }
