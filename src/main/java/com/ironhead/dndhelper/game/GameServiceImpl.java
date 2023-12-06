@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("gameService")
-public class DefaultGameService implements GameService {
+public class GameServiceImpl implements GameService {
 
   @Autowired
   private GameRepository gameRepository;

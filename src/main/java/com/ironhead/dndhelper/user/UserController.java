@@ -30,7 +30,7 @@ public class UserController {
   private AuthenticationManager authenticationManager;
 
   // Methods
-  @PostMapping(value = "/save")
+  @PostMapping(value = "/save_user")
   public ResponseEntity<UserResponseDto> saveUser(@RequestBody UserRequestDto userRequest) {
     try {
       UserResponseDto userResponse = userService.saveUser(userRequest);

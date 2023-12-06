@@ -1,6 +1,6 @@
 package com.ironhead.dndhelper.helpers;
 
-import com.ironhead.dndhelper.user.User;
+import com.ironhead.dndhelper.user.UserInfo;
 import com.ironhead.dndhelper.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,12 +39,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     logger.debug("Entering in loadUserByUsername method...");
-    User user = userRepository.findUserByUsername(username);
-    if (user == null) {
+    UserInfo userInfo = userRepository.findUserByUsername(username);
+    if (userInfo == null) {
       logger.error("Username not found: " + username);
       throw new UsernameNotFoundException("Could not found user with username " + username);
     }
     logger.info("User Authenticated Successfully!");
-    return new DndHelperUserDetails(user);
+    return new DndHelperUserDetails(userInfo);
   }
 }

@@ -4,7 +4,7 @@ import com.ironhead.dndhelper.helpers.RefreshableCrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends RefreshableCrudRepository<User, Long> {
-  User findUserByUsername(String username);
-  User findFirstById(Long id);
+public interface UserRepository extends RefreshableCrudRepository<UserInfo, Long> {
+  UserInfo findUserByUsername(String username);
+  UserInfo findFirstById(Long id);
 }

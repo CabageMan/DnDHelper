@@ -34,17 +34,17 @@ public class UserServiceImpl implements UserService {
       throw new RuntimeException("Parameter username is not found in request");
     }
 
-    User savedUser = null;
+    UserInfo savedUser = null;
 
     var encoder = new BCryptPasswordEncoder();
     String rawPassword = userRequest.getPassword();
     String encodedPassword = encoder.encode(rawPassword);
 
-    User user = modelMapper.map(userRequest, User.class);
+    UserInfo user = modelMapper.map(userRequest, UserInfo.class);
     user.setPassword(encodedPassword);
 
     if (userRequest.getId() != null) {
-      User existedUser = userRepository.findFirstById(userRequest.getId());
+      UserInfo existedUser = userRepository.findFirstById(userRequest.getId());
       if (existedUser != null) {
         existedUser.setId(user.getId());
         existedUser.setUsername(user.getUsername());
@@ -68,15 +68,14 @@ public class UserServiceImpl implements UserService {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     UserDetails userDetails = (UserDetails) authentication.getPrincipal();
     String userNameFromToken = userDetails.getUsername();
-    User user = userRepository.findUserByUsername(userNameFromToken);
+    UserInfo user = userRepository.findUserByUsername(userNameFromToken);
     return modelMapper.map(user, UserResponseDto.class);
   }
 
   @Override
   public List<UserResponseDto> getAllUsers() {
-    List<User> users = (List<User>) userRepository.findAll();
-    Type setOfDTOsTypes = new TypeToken<List<UserResponseDto>>() {
-    }.getType();
+    List<UserInfo> users = (List<UserInfo>) userRepository.findAll();
+    Type setOfDTOsTypes = new TypeToken<List<UserResponseDto>>() {}.getType();
     return modelMapper.map(users, setOfDTOsTypes);
   }
 }

@@ -10,8 +10,7 @@ Leave your notebooks aside.
 
 # TO DO:
 
-- Add tests for authentication functionality
 - Fix Games tests
-- Move to .env token expiration time value
 - Check on sign up if username is already existed
-- Rename User to UserInfo, since it used in org.springframework.security.core.userdetails.User
+- Learn about method implementations in DndHelperUserDetails
+- Add API documentation

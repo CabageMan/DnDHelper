@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/games")
+@RequestMapping("/api/v1")
 public class GameController {
 
   @Resource(name = "gameService")
@@ -16,7 +16,7 @@ public class GameController {
    * <p>Get all games data. The pagination should be used here.</p>
    * @return List<GameDto>
    */
-  @GetMapping
+  @GetMapping(value = "/games")
   public List<GameDto> getGames() {
     return gameService.getAllGames();
   }
@@ -36,7 +36,7 @@ public class GameController {
    * @param gameDto GameDto
    * @return GameDta
    */
-  @PostMapping("/game")
+  @PostMapping("/save_game")
   public GameDto saveGame(final @RequestBody GameDto gameDto) {
     return gameService.saveGame(gameDto);
   }

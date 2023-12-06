@@ -1,6 +1,6 @@
 package com.ironhead.dndhelper.helpers;
 
-import com.ironhead.dndhelper.user.User;
+import com.ironhead.dndhelper.user.UserInfo;
 import com.ironhead.dndhelper.user.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,18 +13,18 @@ import java.util.List;
 /**
  * Implementation of the default SpringBoots UserDetails interface.
  */
-public class DndHelperUserDetails extends User implements UserDetails {
+public class DndHelperUserDetails extends UserInfo implements UserDetails {
 
   private String username;
   private String password;
   Collection<? extends GrantedAuthority> authorities;
 
-  public DndHelperUserDetails(User user) {
-    this.username = user.getUsername();
-    this.password = user.getPassword();
+  public DndHelperUserDetails(UserInfo userInfo) {
+    this.username = userInfo.getUsername();
+    this.password = userInfo.getPassword();
 
     List<GrantedAuthority> auths = new ArrayList<>();
-    for (UserRole role : user.getRoles()) {
+    for (UserRole role : userInfo.getRoles()) {
       auths.add(new SimpleGrantedAuthority(role.getName().toUpperCase()));
     }
     this.authorities = auths;

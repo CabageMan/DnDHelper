@@ -2,6 +2,7 @@ package com.ironhead.dndhelper.jwt;
 
 import com.ironhead.dndhelper.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -11,8 +12,8 @@ import java.util.UUID;
 @Service
 public class RefreshTokenService {
 
-  // Move this to environment
-  public static final long EXPIRED_TIME = 600_000;
+  @Value("${security.jwt.token.expired-time}")
+  private Long EXPIRED_TIME;
 
   @Autowired
   RefreshTokenRepository refreshTokenRepository;

@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity(name = "User") // Available by setting naming strategy in application.properties.
+@Entity(name = "UserInfo") // Available by setting naming strategy in application.properties.
 @Table(name = "USERS")
-public class User {
+public class UserInfo {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +23,9 @@ public class User {
   @ManyToMany(fetch = FetchType.EAGER)
   private Set<UserRole> roles = new HashSet<>();
 
-  public User() { }
+  public UserInfo() { }
 
-  public User(String username, String password, Set<UserRole> roles) {
+  public UserInfo(String username, String password, Set<UserRole> roles) {
     this.username = username;
     this.password = password;
     this.roles = roles;
@@ -65,6 +65,6 @@ public class User {
 
   @Override
   public String toString() {
-    return "User{" + "username='" + username + "'" + "roles='" + roles.toString() + "'" + "}";
+    return "UserInfo{" + "username='" + username + "'" + "roles='" + roles.toString() + "'" + "}";
   }
 }

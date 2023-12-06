@@ -1,6 +1,6 @@
 package com.ironhead.dndhelper.jwt;
 
-import com.ironhead.dndhelper.user.User;
+import com.ironhead.dndhelper.user.UserInfo;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -17,14 +17,14 @@ public class RefreshToken {
 
   @OneToOne
   @JoinColumn(name = "user_id", referencedColumnName = "id")
-  private User user;
+  private UserInfo userInfo;
 
   public RefreshToken() { }
 
-  public RefreshToken(String token, Instant expiryDate, User user) {
+  public RefreshToken(String token, Instant expiryDate, UserInfo userInfo) {
     this.token = token;
     this.expiryDate = expiryDate;
-    this.user = user;
+    this.userInfo = userInfo;
   }
 
   public Long getId() {
@@ -51,11 +51,11 @@ public class RefreshToken {
     this.expiryDate = expiryDate;
   }
 
-  public User getUser() {
-    return user;
+  public UserInfo getUser() {
+    return userInfo;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setUser(UserInfo userInfo) {
+    this.userInfo = userInfo;
   }
 }

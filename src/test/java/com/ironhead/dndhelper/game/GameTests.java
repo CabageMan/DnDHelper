@@ -93,12 +93,12 @@ public class GameTests {
 
   @Test
   public void getAllGamesUnauthorizedStatusForbidden() throws Exception {
-    mockMvc.perform(get("/games")).andExpect(status().isForbidden());
+    mockMvc.perform(get("/api/v1/games")).andExpect(status().isForbidden());
   }
 
   @Test
   @WithMockUser("Blob")
   public void getAllGamesAuthorizedStatusOk() throws Exception {
-    mockMvc.perform(get("/games")).andExpect(status().isOk());
+    mockMvc.perform(get("/api/v1/games")).andExpect(status().isOk());
   }
 }
