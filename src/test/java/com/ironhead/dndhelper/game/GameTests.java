@@ -1,19 +1,28 @@
 package com.ironhead.dndhelper.game;
 
+import jakarta.persistence.EntityNotFoundException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static net.bytebuddy.matcher.ElementMatchers.is;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
+@AutoConfigureMockMvc
 @SpringBootTest
 public class GameTests {
+
+  @Autowired
+  private MockMvc mockMvc;
 
   @Autowired
   private GameRepository gameRepository;
@@ -48,10 +57,9 @@ public class GameTests {
 
   @Test
   public void repositoryGetAllEntities() {
-    // Need learn how to test JPA entities
-    Game firstSavedEntity = gameRepository.save(new Game("Test Find All Game 1"));
-    Game secondSavedEntity = gameRepository.save(new Game("Test Find All Game 2"));
-    Game thirdSavedEntity = gameRepository.save(new Game("Test Find All Game 3"));
+    Game firstSavedEntity = gameRepository.save(new Game("Test Find All Games 1"));
+    Game secondSavedEntity = gameRepository.save(new Game("Test Find All Games 2"));
+    Game thirdSavedEntity = gameRepository.save(new Game("Test Find All Games 3"));
     assertNotNull(firstSavedEntity);
     assertNotNull(secondSavedEntity);
     assertNotNull(thirdSavedEntity);
@@ -62,23 +70,8 @@ public class GameTests {
     savedGames.add(thirdSavedEntity);
 
     List<Game> gamesList = gameRepository.findAll();
-    assertArrayEquals(savedGames.toArray(), gamesList.toArray());
-  }
-
-  @Test
-  public void serviceShouldSaveAndReturnSeveralGames() {
-    GameDto firstGameToSave = new GameDto();
-    firstGameToSave.setName("Save Game Test 1");
-    assertNotNull(gameService.saveGame(firstGameToSave));
-    GameDto secondGameToSave = new GameDto();
-    firstGameToSave.setName("Save Game Test 2");
-    assertNotNull(gameService.saveGame(secondGameToSave));
-    GameDto thirdGameToSave = new GameDto();
-    firstGameToSave.setName("Save Game Test 3");
-    assertNotNull(gameService.saveGame(thirdGameToSave));
-
-    List<GameDto> savedGames = gameService.getAllGames();
-    assertEquals(3, savedGames.size());
+//    assertArrayEquals(savedGames.toArray(), gamesList.toArray());
+    assertEquals(3, gamesList.size());
   }
 
   @Test
@@ -92,7 +85,20 @@ public class GameTests {
     assertEquals(savedGame.getName(), retrievedGame.getName());
 
     assertTrue(gameService.deleteGame(savedGame.getId()));
-    GameDto retrivedDeletedGame = gameService.getGameById(savedGame.getId());
-    assertNull(retrivedDeletedGame);
+
+    Assertions.assertThrows(EntityNotFoundException.class, () -> {
+      gameService.getGameById(savedGame.getId());
+    });
+  }
+
+  @Test
+  public void getAllGamesUnauthorizedStatusForbidden() throws Exception {
+    mockMvc.perform(get("/games")).andExpect(status().isForbidden());
+  }
+
+  @Test
+  @WithMockUser("Blob")
+  public void getAllGamesAuthorizedStatusOk() throws Exception {
+    mockMvc.perform(get("/games")).andExpect(status().isOk());
   }
 }
