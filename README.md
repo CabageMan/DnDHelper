@@ -11,6 +11,6 @@ Leave your notebooks aside.
 # TO DO:
 
 - Fix Games tests
-- Check on sign up if username is already existed
 - Learn about method implementations in DndHelperUserDetails
 - Add API documentation
+- Throw error codes on errors

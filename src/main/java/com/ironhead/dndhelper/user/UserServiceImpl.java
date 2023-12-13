@@ -32,6 +32,8 @@ public class UserServiceImpl implements UserService {
       throw new RuntimeException("Parameter username is not found in request");
     } else if (userRequest.getPassword() == null) {
       throw new RuntimeException("Parameter username is not found in request");
+    } else if (userRepository.existsByUsername(userRequest.getUsername())) {
+      throw new RuntimeException("A user with the same name is ");
     }
 
     UserInfo savedUser = null;
